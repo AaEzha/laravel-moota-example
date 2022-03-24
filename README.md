@@ -8,9 +8,9 @@ Seperti biasa: clone, copy/rename .env, set database, migrate
 
 ## Link penting
 
-Route Webhook: `POST /webhook/x/moota`
+Route Webhook: `POST /webhook`
 
-Route Checking: `GET /ai`
+Route Checking: `GET /check`
 
 ## Dukung
 

@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/webhook/x/moota', MootaWebhookController::class);
+Route::post('/webhook', MootaWebhookController::class);
 
-Route::get('ai', function () {
+Route::get('/check', function () {
     $webhooks = [];
 
     $x = MootaWebhook::latest()->get();
