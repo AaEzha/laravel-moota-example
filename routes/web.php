@@ -24,18 +24,24 @@ Route::post('/webhook/x/moota', MootaWebhookController::class);
 Route::get('ai', function () {
     $webhooks = [];
 
-    foreach (MootaWebhook::latest()->get() as $data) {
-        $response['id'] = $data->getKey();
-        $response['webhook_id'] = $data->body->id;
-        $response['bank_id'] = $data->body->bank_id;
-        $response['account_number'] = $data->body->account_number;
-        $response['bank_type'] = $data->body->bank_type;
-        $response['date'] = $data->body->date;
-        $response['amount'] = $data->body->amount;
-        $response['description'] = $data->body->description;
-        $response['type'] = $data->body->type;
-        $response['balance'] = $data->body->balance;
-
+    $x = MootaWebhook::latest()->get();
+    // return response($x);
+    foreach ($x as $y) {
+        $response['id'] = $y->getKey();
+        $d = [];
+        foreach ($y->body as $data) {
+            $hook['webhook_id'] = $data['id'];
+            $hook['bank_id'] = $data['bank_id'];
+            $hook['account_number'] = $data['account_number'];
+            $hook['bank_type'] = $data['bank_type'];
+            $hook['date'] = $data['date'];
+            $hook['amount'] = $data['amount'];
+            $hook['description'] = $data['description'];
+            $hook['type'] = $data['type'];
+            $hook['balance'] = $data['balance'];
+            array_push($d, $hook);
+        }
+        $response['data'] = $d;
         array_push($webhooks, $response);
     }
 
