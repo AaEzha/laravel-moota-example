@@ -16,12 +16,12 @@ class MootaWebhookController extends Controller
     public function __invoke(Request $request)
     {
         MootaWebhook::create([
-            'body' => $request->all()
+            'body' => $request->getContent()
         ]);
         return response()->json([
             'status' => 200,
             'message' => 'Success',
-            'data' => $request->all()
+            'data' => $request->getContent()
         ]);
     }
 }
