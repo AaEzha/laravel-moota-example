@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MootaWebhookController;
+use App\Models\MootaWebhook;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,11 @@ Route::get('/', function () {
 });
 
 Route::post('/webhook/x/moota', MootaWebhookController::class);
+
+Route::get('ai', function () {
+    return response()->json([
+        'status' => 200,
+        'message' => 'Success',
+        'data' => MootaWebhook::all()
+    ]);
+})
