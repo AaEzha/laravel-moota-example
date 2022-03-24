@@ -27,4 +27,4 @@ Route::get('ai', function () {
         'message' => 'Success',
         'data' => MootaWebhook::all()
     ]);
-})
+});
