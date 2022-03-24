@@ -15,9 +15,9 @@ class MootaWebhookController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // MootaWebhook::create([
-        //     'body' => $request->all()
-        // ]);
+        MootaWebhook::create([
+            'body' => $request->all()
+        ]);
         return response()->json([
             'status' => 200,
             'message' => 'Success',
